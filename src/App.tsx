@@ -1,25 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Layout,  Breadcrumb } from 'antd';
+import Navbar from 'components/Navbar'
+const { Header, Content, Footer } = Layout;
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Layout className="app layout">
+          <Header>
+              <div className="logo" />
+              <Navbar/>
+          </Header>
+          <Content style={{ padding: '0 50px' }}>
+              <Breadcrumb style={{ margin: '16px 0' }}>
+                  <Breadcrumb.Item>Home</Breadcrumb.Item>
+                  <Breadcrumb.Item>List</Breadcrumb.Item>
+                  <Breadcrumb.Item>App</Breadcrumb.Item>
+              </Breadcrumb>
+              <div className="site-layout-content">Content</div>
+          </Content>
+          <Footer style={{ textAlign: 'center' }}>Igor Motyka © 2020 Super sklep</Footer>
+      </Layout>
   );
 }
 
