@@ -10,7 +10,7 @@ const {Header, Content, Footer} = Layout;
 function App() {
     return (
         <Layout className="app layout">
-            <Header>
+            <Header className="header">
                 <div className="logo"/>
                 <Navbar/>
             </Header>

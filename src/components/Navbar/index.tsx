@@ -21,7 +21,6 @@ function Navbar() {
                 }
             </Menu>
         </Router>
-
     );
 }
 

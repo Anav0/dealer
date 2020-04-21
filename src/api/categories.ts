@@ -1,3 +1,5 @@
+import axiosInstance from "./axios";
+
 export default {
-    getClothingCategories: () => [],
+    getCategories: () => axiosInstance.get("/categories"),
 }
