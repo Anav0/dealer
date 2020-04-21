@@ -1,5 +1,4 @@
 .product-wrapper{
-    background-color: hsl(175,50%,50%);
     height: 150px;
     position: relative;
     cursor: pointer;
@@ -7,10 +6,12 @@
 }
 
 .product-wrapper:hover{
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
     transform: scale(1.025);
 }
 
+.ant-result-title{
+    color: white;
+}
 .product-image{
     object-fit:cover;
     position:absolute;
@@ -28,6 +29,29 @@
     box-shadow: 15px 5px 5px rgba(0,0,0,0.25);
     padding:5px 10px ;
     font-weight: bold;
+}
+.hidden{
+    opacity:0;
+}
+.visible{
+    opacity:1;
+}
+.product-overlay{
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    transition: opacity 0.25s ease-in-out;
+
+}
+
+.blur{
+    filter: blur(5px);
 }
 
 .product-price{
