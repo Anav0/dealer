@@ -14,6 +14,7 @@ interface IProductGridState {
     cartItems: Product[];
 }
 
+// WZORZEC OBSERWATOR - Observer
 export default class ProductGrid extends Component<IProductGridProp, IProductGridState> implements CartObserver {
 
     constructor(props: IProductGridProp) {

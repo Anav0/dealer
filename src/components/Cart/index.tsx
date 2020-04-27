@@ -13,11 +13,10 @@ interface ICartState {
     cartItems: Product[]
 }
 
-interface ICartProps {
-}
-
 //TODO: save cart as cookie or in local storage
-export default class Cart extends Component<ICartProps, ICartState> implements ICartObserver {
+
+// WZORZEC OBSERWATOR - Observer
+export default class Cart extends Component<{}, ICartState> implements ICartObserver {
 
     constructor(props: any) {
         super(props)
@@ -42,7 +41,6 @@ export default class Cart extends Component<ICartProps, ICartState> implements I
     }
 
     removeItem(item: Product) {
-        console.log(item)
         cartSubjectInstance.removeItemFromCart(item)
     }
 

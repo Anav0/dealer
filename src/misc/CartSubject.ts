@@ -1,6 +1,7 @@
 import CartObserver from "misc/CartObserver";
 import {Product} from "common/models/product";
 
+// WZORZEC OBSERVATOR - Subject definition
 class CartSubject {
 
     private observers: CartObserver[] = [];
@@ -33,11 +34,8 @@ class CartSubject {
             observer.update(this.cartItems)
         }
     }
-
-    isInCart(productId: string){
-        return this.cartItems.some((item)=>item._id===productId)
-    }
 }
 
+// During app lifespan probably only one cart is necessary so only instance is exported
 const instance = new CartSubject()
 export default instance;
