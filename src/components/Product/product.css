@@ -12,6 +12,7 @@
 .ant-result-title{
     color: white;
 }
+
 .product-image{
     object-fit:cover;
     position:absolute;
@@ -30,12 +31,15 @@
     padding:5px 10px ;
     font-weight: bold;
 }
+
 .hidden{
     opacity:0;
 }
+
 .visible{
     opacity:1;
 }
+
 .product-overlay{
     position:absolute;
     left:0;

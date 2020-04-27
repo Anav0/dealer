@@ -7,7 +7,7 @@ export default  [
         path: "/",
         exact: true,
         name: 'Home',
-        main: () => <h2>Home page</h2>
+        main: () => <ProductListByCategory/>
     },
     {
         path: "/products/producer/:id",

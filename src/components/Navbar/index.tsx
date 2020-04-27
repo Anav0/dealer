@@ -2,6 +2,9 @@ import React,{useEffect,useState} from 'react';
 import {Menu} from 'antd';
 import {Link} from "react-router-dom";
 import { useLocation } from 'react-router-dom'
+import Cart from 'components/Cart';
+import "./index.css";
+
 const routes: any[] = []
 
 function Navbar() {
@@ -27,6 +30,9 @@ function Navbar() {
                         )
                     })
                 }
+                <Menu.Item className={"cart"} style={{float: 'right'}}>
+                    <Cart/>
+                </Menu.Item>
             </Menu>
     );
 }
