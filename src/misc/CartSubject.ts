@@ -6,17 +6,43 @@ class CartSubject {
 
     private observers: CartObserver[] = [];
     private cartItems: Product[] = [];
+    private LOCAL_STORAGE_NAME = 'cart'
+
+    constructor() {
+        try {
+            const savedCart = localStorage.getItem(this.LOCAL_STORAGE_NAME)
+            if (savedCart)
+                this.cartItems = JSON.parse(savedCart);
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
+    saveCartToLocalStorage() {
+        try {
+            localStorage.setItem(this.LOCAL_STORAGE_NAME, JSON.stringify(this.cartItems))
+        } catch (error) {
+            console.error(error)
+        }
+    }
 
     addItemToCart(item: Product) {
-        if(!this.cartItems.some(existingItem => existingItem._id === item._id))
-        {
+        if (!this.cartItems.some(existingItem => existingItem._id === item._id)) {
             this.cartItems.push(item)
+            this.saveCartToLocalStorage()
             this.updateObservers()
         }
     }
 
     removeItemFromCart(item: Product) {
         this.cartItems = this.cartItems.filter(existingItem => existingItem._id !== item._id)
+        this.saveCartToLocalStorage()
+        this.updateObservers()
+    }
+
+    clearCart() {
+        this.cartItems = []
+        this.saveCartToLocalStorage()
         this.updateObservers()
     }
 

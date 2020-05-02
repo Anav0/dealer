@@ -1,8 +1,9 @@
 import React from "react";
 import ProductListByCategory from "pages/ProductListByCategory";
 import ProductListByProducer from "pages/ProductListByProducer";
+import PaymentSuccessful from "pages/PaymentSuccessful";
 
-export default  [
+export default [
     {
         path: "/",
         exact: true,
@@ -20,5 +21,11 @@ export default  [
         exact: true,
         name: 'ProductsByCategory',
         main: () => <ProductListByCategory/>
-    }
+    },
+    {
+        path: "/payment-successful",
+        exact: true,
+        name: 'PaymentSuccessful',
+        main: () => <PaymentSuccessful/>
+    },
 ]

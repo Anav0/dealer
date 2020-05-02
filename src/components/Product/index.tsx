@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import "./product.css";
-import {caluclatePrice} from "../../misc/helpers";
+import {calculatePrice} from "../../misc/helpers";
 import {Result,  } from 'antd';
 import {CheckOutlined, ShoppingCartOutlined} from '@ant-design/icons';
 
@@ -39,7 +39,7 @@ export default (props: IProductProps) => {
             <img className={`product-image ${isHovering || props.isInCart ? 'blur' : ''}`} alt={"product image"}
                  src={props.image}/>
             <h3 className={`product-name ${isHovering || props.isInCart ? 'blur' : ''}`}>{props.name}</h3>
-            <h3 className={`product-price ${isHovering || props.isInCart ? 'blur' : ''}`}>{caluclatePrice(props.price)}zł</h3>
+            <h3 className={`product-price ${isHovering || props.isInCart ? 'blur' : ''}`}>{calculatePrice(props.price)}zł</h3>
         </div>
     )
 }

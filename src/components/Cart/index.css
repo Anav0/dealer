@@ -1,12 +1,28 @@
 .anticon {
-    margin:0 !important;
+    margin: 0 !important;
 }
 
-.cart-pay-btn{
-    margin-top:1rem;
+.btn {
+    cursor: pointer;
 }
 
-.card-layout{
+.cart-pay-btn {
+    margin-top: 1rem;
+    max-width: 25%;
+    min-width: 100px;
+}
+
+.card-layout {
     background-color: transparent;
-    max-width: 350px;
+    max-width: 550px;
+    min-width: 200px;
+}
+
+.ant-popover-arrow {
+    display: none;
+}
+
+.payment-summary * {
+    margin: 0 !important;
+    padding-top: 1rem;
 }

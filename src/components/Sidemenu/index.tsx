@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {Layout, Menu} from 'antd';
+import {Layout, Menu, Typography} from 'antd';
 import api from "api"
 import {Category} from "../../common/models/category";
 import {Producer} from "../../common/models/producer";
 import "./index.css";
 import {Link, useLocation} from "react-router-dom";
 
+const {Text} = Typography;
 const {SubMenu} = Menu;
 const {Sider} = Layout;
 
@@ -23,9 +24,9 @@ function Sidemenu() {
         fetchCategories();
     }, [])
 
-    useEffect(()=>{
-        setIds(categories.map(category=>category._id))
-    },[categories])
+    useEffect(() => {
+        setIds(categories.map(category => category._id))
+    }, [categories])
 
     return (
         <Sider width={200} className="site-layout-background">
@@ -38,20 +39,21 @@ function Sidemenu() {
                     categories.map(category => <SubMenu
                         key={category._id}
                         title={
-                            <span >{category.name}</span>
+                            <Text>{category.name}</Text>
                         }
                     >
                         <Menu.Item>
                             <Link to={`/products/category/${category._id}`}>All</Link>
                         </Menu.Item>
                         {
-                        category.producers.map(producer=>{
-                            const casted = producer as Producer;
-                            return (
-                            <Menu.Item key={category._id+casted._id} className={`${casted._id===id ? 'ant-menu-item-selected' : ''}`}>
-                                <Link to={`/products/producer/${casted._id}`}>{casted.name}</Link>
-                            </Menu.Item>)
-                        })
+                            category.producers.map(producer => {
+                                const casted = producer as Producer;
+                                return (
+                                    <Menu.Item key={category._id + casted._id}
+                                               className={`${casted._id === id ? 'ant-menu-item-selected' : ''}`}>
+                                        <Link to={`/products/producer/${casted._id}`}>{casted.name}</Link>
+                                    </Menu.Item>)
+                            })
                         }
                     </SubMenu>)
                 }
