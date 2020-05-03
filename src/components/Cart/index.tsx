@@ -8,6 +8,7 @@ import ICartObserver from "misc/CartObserver";
 import {Product} from "common/models/product";
 import api from "api";
 import {loadStripe} from "@stripe/stripe-js";
+import notificationManager from "misc/Notification/ActiveNotificationManager"
 
 const {Text, Title} = Typography;
 
@@ -16,8 +17,6 @@ interface ICartState {
     stripe: any,
     isLoading: boolean
 }
-
-//TODO: save cart as cookie or in local storage
 
 // WZORZEC OBSERWATOR - Observer
 export default class Cart extends Component<{}, ICartState> implements ICartObserver {
@@ -66,10 +65,9 @@ export default class Cart extends Component<{}, ICartState> implements ICartObse
             const {error} = await this.state.stripe.redirectToCheckout({
                 sessionId
             })
-            //TODO: Add notification
+            notificationManager.showError("Ups", error.message)
         } catch (error) {
-            console.error(error)
-            //TODO: Add notification
+            notificationManager.showError("Ups", "Coś poszło nie tak spróbuj ponownie za kilka minut")
         } finally {
             this.setState({
                 isLoading: false

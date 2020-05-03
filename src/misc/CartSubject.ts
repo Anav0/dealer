@@ -1,5 +1,6 @@
 import CartObserver from "misc/CartObserver";
 import {Product} from "common/models/product";
+import notificationManager from "misc/Notification/ActiveNotificationManager";
 
 // WZORZEC OBSERVATOR - Subject definition
 class CartSubject {
@@ -15,6 +16,7 @@ class CartSubject {
                 this.cartItems = JSON.parse(savedCart);
         } catch (error) {
             console.error(error)
+            notificationManager.showError("Ups", "Nie udało się zapisać koszyka w zasobach przeglądarki")
         }
     }
 
@@ -22,7 +24,7 @@ class CartSubject {
         try {
             localStorage.setItem(this.LOCAL_STORAGE_NAME, JSON.stringify(this.cartItems))
         } catch (error) {
-            console.error(error)
+            notificationManager.showError("Ups", "Nie udało się zapisać koszyka w zasobach przeglądarki")
         }
     }
 
