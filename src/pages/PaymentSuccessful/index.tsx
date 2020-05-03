@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import {Button, Result} from 'antd';
 import {Link} from "react-router-dom";
-import cartSubjectInstance from "misc/CartSubject"
+import cartSubjectInstance from "misc/Cart/CartSubject"
 import "./index.css";
 
 export default () => {

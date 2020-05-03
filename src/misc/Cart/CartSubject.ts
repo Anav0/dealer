@@ -1,4 +1,4 @@
-import CartObserver from "misc/CartObserver";
+import CartObserver from "misc/Cart/CartObserver";
 import {Product} from "common/models/product";
 import notificationManager from "misc/Notification/ActiveNotificationManager";
 

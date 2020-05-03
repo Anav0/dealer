@@ -1,9 +1,11 @@
-import categories from "api/categories";
-import products from "api/products";
-import payment from "api/payment";
+import CategoriesApi from "api/categories";
+import ProductsApi from "api/products";
+import PaymentApi from "api/payment";
 
-export default {
-    categories,
-    products,
-    payment
+/* WZORZEC FASADA */
+//TODO: check if static is oke. Concurrency
+export default abstract class Api {
+    static categories: CategoriesApi = new CategoriesApi()
+    static products: ProductsApi = new ProductsApi()
+    static payment: PaymentApi = new PaymentApi()
 }

@@ -3,8 +3,8 @@ import ProductComp from "components/Product";
 import {Empty} from 'antd';
 import {Product} from "common/models/product";
 import "./productsGrid.css";
-import cartSubjectInstance from "misc/CartSubject"
-import CartObserver from "../../misc/CartObserver";
+import cartSubjectInstance from "misc/Cart/CartSubject"
+import CartObserver from "../../misc/Cart/CartObserver";
 
 interface IProductGridProp {
     products: Product[];
