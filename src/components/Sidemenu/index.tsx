@@ -43,7 +43,7 @@ function Sidemenu() {
                         }
                     >
                         <Menu.Item>
-                            <Link to={`/products/category/${category._id}`}>All</Link>
+                            <Link to={`/products/category/${category._id}`}>Wszystkie</Link>
                         </Menu.Item>
                         {
                             category.producers.map(producer => {
