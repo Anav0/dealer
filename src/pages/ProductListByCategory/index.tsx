@@ -3,10 +3,11 @@ import {useParams} from "react-router-dom";
 import api from 'api';
 import "./productListByCategory.css";
 import ProductsGrid from "../../components/ProductsGrid";
+import {Product} from "../../common/models/product";
 
 export default () => {
     const {id: categoryId} = useParams();
-    const [products, setProducts] = useState([]);
+    const [products, setProducts] = useState<Product[]>([]);
     useEffect(() => {
         const fetchProducts = async () => {
             if (categoryId && categoryId !== 'all') {

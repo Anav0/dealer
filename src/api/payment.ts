@@ -1,5 +1,5 @@
 import axiosInstance from "./axios";
-import {PaymentSessionResponse} from "./responses/PaymentSessionResponse";
+import {PaymentSessionResponse} from "api/responses/PaymentSessionResponse";
 
 export default class PaymentApi {
     createPaymentSession(productIds: string[], cancelUrl: string | undefined = undefined) {
