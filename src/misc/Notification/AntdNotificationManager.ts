@@ -1,22 +1,21 @@
 import {ReactNode} from "react";
-import {INotificationManager} from "misc/Notification/INotificationManager";
-import {NotificationConfigFactory} from "misc/Notification/NotificationConfigFactory";
+import {NotificationManager} from "misc/Notification/NotificationManager";
 import {notification} from "antd";
 
-export class AntdNotificationManager implements INotificationManager {
+export class AntdNotificationManager extends NotificationManager {
 
     showError(title: string | ReactNode, desc: string | ReactNode) {
-        const config = NotificationConfigFactory.getErrorConfig(title, desc)
+        const config = this.factory.getErrorConfig(title, desc)
         notification.error(config)
     }
 
     showInfo(title: string | ReactNode, desc: string | ReactNode) {
-        const config = NotificationConfigFactory.getInfoConfig(title, desc)
+        const config = this.factory.getInfoConfig(title, desc)
         notification.info(config)
     }
 
     showWarning(title: string | ReactNode, desc: string | ReactNode) {
-        const config = NotificationConfigFactory.getWarningConfig(title, desc)
+        const config = this.factory.getWarningConfig(title, desc)
         notification.warning(config)
     }
 

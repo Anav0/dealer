@@ -1,6 +1,8 @@
 import {AntdNotificationManager} from "./AntdNotificationManager";
-import {INotificationManager} from "./INotificationManager";
+import {NotificationManager} from "./NotificationManager";
+import {DefaultNotificationConfigFactory} from "./DefaultNotificationConfigFactory";
+import {NotificationConfigBuilder} from "./NotificationConfigBuilder";
 
-const active: INotificationManager = new AntdNotificationManager()
+const active: NotificationManager = new AntdNotificationManager(new DefaultNotificationConfigFactory(new NotificationConfigBuilder()))
 
 export default active;

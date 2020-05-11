@@ -2,9 +2,10 @@ import React, {Component} from "react";
 import {Avatar, Badge, Button, Layout, List, Popover, Typography} from "antd";
 import {CloseOutlined, ShoppingCartOutlined} from '@ant-design/icons';
 import {calculatePrice} from "misc/helpers";
-import cartSubjectInstance from "misc/Cart/CartSubject";
+import {ISubject} from "misc/Observer/ISubject";
+import cartSubjectInstance, {CartSubject} from "misc/Observer/CartSubject"
 import "./index.css";
-import ICartObserver from "misc/Cart/CartObserver";
+import IObserver from "misc/Observer/IObserver";
 import {Product} from "common/models/product";
 import api from "api";
 import {loadStripe} from "@stripe/stripe-js";
@@ -19,7 +20,7 @@ interface ICartState {
 }
 
 // WZORZEC OBSERWATOR - Observer
-export default class Cart extends Component<{}, ICartState> implements ICartObserver {
+export default class Cart extends Component<{}, ICartState> implements IObserver {
 
     constructor(props: any) {
         super(props)
@@ -44,10 +45,11 @@ export default class Cart extends Component<{}, ICartState> implements ICartObse
         cartSubjectInstance.removeObserver(this)
     }
 
-    update(cartItems: Product[]): void {
+    update(subject: ISubject): void {
+        const casted = subject as CartSubject;
         this.setState({
             //NOTE: this is stupid, in order to achieve reactivity it has to be this way
-            cartItems: [...cartItems]
+            cartItems: [...casted.cartItems]
         })
     }
 

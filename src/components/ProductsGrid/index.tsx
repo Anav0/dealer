@@ -3,8 +3,9 @@ import ProductComp from "components/Product";
 import {Empty} from 'antd';
 import {Product} from "common/models/product";
 import "./productsGrid.css";
-import cartSubjectInstance from "misc/Cart/CartSubject"
-import CartObserver from "../../misc/Cart/CartObserver";
+import cartSubjectInstance, {CartSubject} from "misc/Observer/CartSubject"
+import IObserver from "misc/Observer/IObserver";
+import {ISubject} from "misc/Observer/ISubject";
 
 interface IProductGridProp {
     products: Product[];
@@ -15,7 +16,7 @@ interface IProductGridState {
 }
 
 // WZORZEC OBSERWATOR - Observer
-export default class ProductGrid extends Component<IProductGridProp, IProductGridState> implements CartObserver {
+export default class ProductGrid extends Component<IProductGridProp, IProductGridState> implements IObserver {
 
     constructor(props: IProductGridProp) {
         super(props);
@@ -32,9 +33,10 @@ export default class ProductGrid extends Component<IProductGridProp, IProductGri
         cartSubjectInstance.removeObserver(this)
     }
 
-    update(cartItems: Product[]): void {
+    update(subject: ISubject): void {
+        const casted = subject as CartSubject
         this.setState({
-            cartItems: [...cartItems]
+            cartItems: [...casted.cartItems]
         })
     }
 
@@ -49,7 +51,7 @@ export default class ProductGrid extends Component<IProductGridProp, IProductGri
                             return (
                                 // @ts-ignore
                                 <ProductComp
-                                    isInCart={this.state.cartItems.some(product=>product._id===casted._id)}
+                                    isInCart={this.state.cartItems.some(product => product._id === casted._id)}
                                     onClick={() => {
                                         cartSubjectInstance.addItemToCart(casted)
                                     }} key={product._id} {...casted}/>)
